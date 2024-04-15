@@ -1,0 +1,206 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  color: black;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #f4f6f8;
+}
+
+body {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "nav main";
+  grid-template-rows: 0.5fr 4fr;
+  grid-template-columns: 1fr 3fr;
+  
+  transition: background 0.2s linear;
+}
+
+
+/* a partir daqui eu adicionei o estilo do dark theme */
+
+body.dark {
+  background: #111;
+  color: white;
+}
+
+.dark {
+  color: white;
+  background: #292c35;
+}
+
+/* .light-font {
+  color: white
+} */
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.dark-theme {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-bottom: 3px;
+}
+
+.label {
+  background: #4d4b4b;
+  border-radius: 50px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 5px;
+  position: relative;
+  height: 26px;
+  width: 50px;
+
+  transform: scale(1.5);
+}
+
+.label .ball {
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  height: 22px;
+  width: 22px;
+
+  transform: translateX(0px);
+  transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .label .ball {
+  transform: translateX(24px);
+}
+
+.fa-moon {
+  color: #f1c40f;
+}
+
+.fa-sun {
+  color: #f39c12;
+}
+
+/* fim do estilo do dark-theme */
+
+header {
+  grid-area: header;
+  display: grid;
+  grid-template-areas: "logo title";
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+  box-shadow: 5px 0 5px black;
+  padding: 1rem;
+  background-color: #fff;
+  z-index: 999;
+}
+
+header > img {
+  grid-area: logo;
+  max-height: 40px;
+  max-width: 260px;
+}
+
+header h1 {
+  grid-area: title;
+  margin-left: 1rem;
+  justify-content: center;
+}
+
+header a {
+  text-decoration: none;
+  list-style: none;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.menu {
+  grid-area: nav;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.menu a {
+  text-decoration: none;
+  padding: 1rem;
+}
+
+.menu a.active {
+  background-color: #32b2e3;
+  color: white;
+}
+
+main {
+  grid-area: main;
+  color: white;
+  padding: 1rem;
+  overflow-x: scroll;
+}
+
+main section {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+main section p {
+  margin-bottom: 1rem;
+}
+
+.mobile-menu-icon {
+  display: none;
+}
+
+/* RESPONSIVIDADE */
+
+@media screen and (max-width: 730px) {
+  .menu {
+    display: none;
+  }
+
+  body {
+    grid-template-areas:
+      "header header"
+      "nav nav"
+      "main main";
+    grid-template-rows: 0.5fr 4fr;
+  }
+
+  header {
+    grid-template-areas: "logo title icon";
+  }
+
+  .mobile-menu-icon {
+    display: block;
+  }
+
+  .mobile-menu-icon button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .open {
+    display: grid;
+  }
+}
